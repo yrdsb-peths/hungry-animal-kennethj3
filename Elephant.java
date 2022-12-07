@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Elephant extends Actor
 {
     GreenfootSound sound;
-    
     GreenfootImage[] images = new GreenfootImage[8];
     
     public Elephant(){
@@ -17,11 +16,13 @@ public class Elephant extends Actor
         
         for(int i = 0; i < images.length; i++)
         {
-            images[i] = new GreenfootImage("images/elephant.idle/idle" + i + ".png");
+            images[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
             
         }
         
+        
         setImage(images[4]);
+        
         
     }
     
@@ -34,15 +35,28 @@ public class Elephant extends Actor
         // Add your action code here.
         if(Greenfoot.isKeyDown("d"))
         {
-            move(4);
+            move(3);
         }
         if(Greenfoot.isKeyDown("a"))
         {
-            move(-4);
+            move(-3);
         }
         
         eat();
+        animations();
     
+    }
+    
+    int i = 0;
+    public void animations()
+    {
+        setImage(images[i]);
+        i++;
+        if(i > 7)
+        {
+            i = 0;
+        }
+        
     }
     
     public void eat()
