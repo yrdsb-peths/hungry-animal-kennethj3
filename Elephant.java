@@ -10,7 +10,7 @@ public class Elephant extends Actor
 {
     GreenfootSound sound;
     GreenfootImage[] images = new GreenfootImage[8];
-    
+    SimpleTimer animationTimer = new SimpleTimer(); 
     public Elephant(){
         sound = new GreenfootSound("elephantcub.mp3");
         
@@ -20,6 +20,7 @@ public class Elephant extends Actor
             images[i].scale(75,75);
         }
         
+        animationTimer.mark();
         
         setImage(images[4]);
         
@@ -50,12 +51,19 @@ public class Elephant extends Actor
     int i = 0;
     public void animations()
     {
+        if(animationTimer.millisElapsed() < 500)
+        {
+            return;
+        }
+        animationTimer.mark();
+        
         setImage(images[i]);
         i++;
         if(i > 7)
         {
             i = 0;
         }
+        
         
     }
     
