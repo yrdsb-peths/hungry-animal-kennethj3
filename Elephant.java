@@ -9,20 +9,29 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Elephant extends Actor
 {
     GreenfootSound sound;
-    GreenfootImage[] images = new GreenfootImage[8];
+    GreenfootImage[] imagesRight = new GreenfootImage[8];
+    GreenfootImage[] imagesLeft = new GreenfootImage[8];
     SimpleTimer animationTimer = new SimpleTimer(); 
+    String facing = "right";
     public Elephant(){
         sound = new GreenfootSound("elephantcub.mp3");
         
-        for(int i = 0; i < images.length; i++)
+        for(int i = 0; i < imagesRight.length; i++)
         {
-            images[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
-            images[i].scale(75,75);
+            imagesRight[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
+            imagesRight[i].scale(75,75);
+        }
+        
+        for(int i = 0; i < imagesLeft.length; i++)
+        {
+            imagesLeft[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
+            imagesLeft[i].mirrorHorizontally();
+            imagesLeft[i].scale(75,75);
         }
         
         animationTimer.mark();
         
-        setImage(images[4]);
+        setImage(imagesRight[0]);
         
         
     }
@@ -37,10 +46,12 @@ public class Elephant extends Actor
         if(Greenfoot.isKeyDown("d"))
         {
             move(3);
+            facing = "right";
         }
         if(Greenfoot.isKeyDown("a"))
         {
             move(-3);
+            facing = "left";
         }
         
         eat();
@@ -51,13 +62,21 @@ public class Elephant extends Actor
     int i = 0;
     public void animations()
     {
-        if(animationTimer.millisElapsed() < 500)
+        if(animationTimer.millisElapsed() < 100)
         {
             return;
         }
         animationTimer.mark();
         
-        setImage(images[i]);
+        if(facing.equals("right"))
+        {
+            setImage(imagesRight[i]);
+        }
+        else
+        {
+            setImage(imagesLeft[i]);
+        }
+        
         i++;
         if(i > 7)
         {
