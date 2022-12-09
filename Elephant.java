@@ -53,6 +53,31 @@ public class Elephant extends Actor
             move(-3);
             facing = "left";
         }
+        //jumping
+        if(Greenfoot.isKeyDown("space"))
+        {
+            
+            if(facing == "right")
+            {
+                setLocation(getX()+3, getY()-5);
+            }
+            else
+            {
+                setLocation(getX()-3, getY()-5);
+            }
+            
+            
+            if(animationTimer.millisElapsed() < 200)
+            {
+                return;
+            }
+            setLocation(getX(), 300);
+            if(animationTimer.millisElapsed() < 700)
+            {
+                return;
+            }
+            
+        }
         
         eat();
         animations();
