@@ -45,12 +45,12 @@ public class Elephant extends Actor
         // Add your action code here.
         if(Greenfoot.isKeyDown("d"))
         {
-            move(3);
+            move(4);
             facing = "right";
         }
         if(Greenfoot.isKeyDown("a"))
         {
-            move(-3);
+            move(-4);
             facing = "left";
         }
         //jumping
@@ -59,13 +59,13 @@ public class Elephant extends Actor
             
             if(facing == "right")
             {
-                setLocation(getX()+3, getY()-5);
+                setLocation(getX(), getY()-5);
             }
             else
             {
-                setLocation(getX()-3, getY()-5);
+                setLocation(getX(), getY()-5);
             }
-            
+        
             
             if(animationTimer.millisElapsed() < 200)
             {
@@ -76,11 +76,13 @@ public class Elephant extends Actor
             {
                 return;
             }
-            
-        }
+        }    
+        
         
         eat();
         animations();
+        
+        
     
     }
     
@@ -122,4 +124,6 @@ public class Elephant extends Actor
             sound.play();
         }
     }
+    
+    
 }
