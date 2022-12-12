@@ -28,8 +28,7 @@ public class MyWorld extends World
         
         scoreLabel = new Label(0, 75);
         addObject(scoreLabel, 30, 40);
-       
-        
+      
     }
     
     public void increaseScore()
@@ -51,6 +50,7 @@ public class MyWorld extends World
         int y = 10;
         addObject(apple, x, y);
     }
+    
     
     
     
