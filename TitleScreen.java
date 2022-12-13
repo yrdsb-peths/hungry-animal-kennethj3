@@ -50,7 +50,7 @@ public class TitleScreen extends World
         addObject(label,296,260);
 
         
-        Label label2 = new Label("Press \u2190 and \u2192 to move", 30);
+        Label label2 = new Label("Press 'a' and 'd' to move", 30);
         addObject(label2,292,343);
         label2.setLocation(296,321);
     }
