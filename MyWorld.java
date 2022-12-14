@@ -42,6 +42,8 @@ public class MyWorld extends World
         }
     }
     
+    // Ends the game 
+    
     public void gameOver()
     {
         Label endLabel = new Label("Game Over", 100);
